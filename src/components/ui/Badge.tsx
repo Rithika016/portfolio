@@ -1,6 +1,6 @@
 interface BadgeProps {
   children: React.ReactNode;
-  variant?: 'default' | 'accent';
+  variant?: 'default' | 'accent' | 'cyan';
   className?: string;
 }
 
@@ -8,6 +8,7 @@ export function Badge({ children, variant = 'default', className = '' }: BadgePr
   const variants = {
     default: 'bg-zinc-800 text-zinc-300 border-zinc-700',
     accent: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20',
+    cyan: 'bg-cyan-950/50 text-cyan-400 border-cyan-800/40',
   };
 
   return (

@@ -75,14 +75,14 @@ export const PROJECTS: Project[] = [
       { label: 'Containerized', value: 'Docker' },
       { label: 'Scaling', value: 'Horizontal' },
     ],
-    mermaidDiagram: \`graph LR
+    mermaidDiagram: `graph LR
     A[Producer API] -->|Enqueue| B[Redis Queue]
     B -->|Dequeue| C[Worker Pool]
     C -->|Process| D[Task Handler]
     D -->|Success| E[Results Store]
     D -->|Failure| F[Retry Queue]
     F -->|Backoff| B
-    C -->|Heartbeat| G[Health Monitor]\`,
+    C -->|Heartbeat| G[Health Monitor]`,
   },
   {
     slug: 'realtime-collaborative-editor',
@@ -113,7 +113,7 @@ export const PROJECTS: Project[] = [
       { label: 'Conflict Resolution', value: 'OT-based' },
       { label: 'Multi-user', value: 'Yes' },
     ],
-    mermaidDiagram: \`graph TB
+    mermaidDiagram: `graph TB
     A[Client A] -->|WebSocket| D[Express + Socket.io Server]
     B[Client B] -->|WebSocket| D
     C[Client C] -->|WebSocket| D
@@ -121,7 +121,7 @@ export const PROJECTS: Project[] = [
     E -->|Broadcast| A
     E -->|Broadcast| B
     E -->|Broadcast| C
-    D -->|Persist| F[Document Store]\`,
+    D -->|Persist| F[Document Store]`,
   },
   {
     slug: 'ai-codebase-assistant',
@@ -153,7 +153,7 @@ export const PROJECTS: Project[] = [
       { label: 'Auth', value: 'JWT' },
       { label: 'Deployment', value: 'Cloud Run' },
     ],
-    mermaidDiagram: \`graph TB
+    mermaidDiagram: `graph TB
     A[React Frontend] -->|Query| B[FastAPI Backend]
     B -->|Auth| C[JWT Middleware]
     C -->|Validated| D[RAG Pipeline]
@@ -161,7 +161,7 @@ export const PROJECTS: Project[] = [
     D -->|Metadata| F[MongoDB]
     E -->|Results| D
     D -->|Response| A
-    B -->|Cache| G[Redis]\`,
+    B -->|Cache| G[Redis]`,
   },
 ];
 

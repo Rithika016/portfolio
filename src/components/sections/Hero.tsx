@@ -68,3 +68,5 @@ export function Hero() {
     </Container>
   );
 }
+
+export const HeroSection = Hero;

@@ -65,3 +65,5 @@ export function About() {
     </Container>
   );
 }
+
+export const AboutSection = About;

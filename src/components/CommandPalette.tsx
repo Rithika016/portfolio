@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Search, ArrowRight, FileText, FolderOpen, User, Code, Mail, X } from 'lucide-react';
 
 interface CommandItem {
@@ -47,44 +46,42 @@ export function CommandPalette() {
 
   useEffect(() => { if (!isOpen) setQuery(''); }, [isOpen]);
 
+  if (!isOpen) return null;
+
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          <motion.div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[200]" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setIsOpen(false)} />
-          <motion.div className="fixed top-[20%] left-1/2 -translate-x-1/2 w-full max-w-lg z-[201] px-4" initial={{ opacity: 0, y: -20, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: -20, scale: 0.95 }} transition={{ duration: 0.15 }}>
-            <div className="bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl shadow-black/50 overflow-hidden">
-              <div className="flex items-center gap-3 px-4 border-b border-zinc-800">
-                <Search className="w-4 h-4 text-zinc-500 shrink-0" />
-                <input type="text" placeholder="Type a command or search..." className="w-full py-3.5 bg-transparent text-zinc-50 text-sm placeholder:text-zinc-500 focus:outline-none" value={query} onChange={(e) => setQuery(e.target.value)} autoFocus />
-                <button onClick={() => setIsOpen(false)} className="text-zinc-500 hover:text-zinc-300"><X className="w-4 h-4" /></button>
-              </div>
-              <div className="max-h-72 overflow-y-auto py-2">
-                {filtered.length === 0 && <p className="px-4 py-8 text-center text-sm text-zinc-500">No results found.</p>}
-                {['Navigation', 'Actions'].map((section) => {
-                  const items = filtered.filter((cmd) => cmd.section === section);
-                  if (items.length === 0) return null;
-                  return (
-                    <div key={section}>
-                      <p className="px-4 py-1.5 text-xs font-medium text-zinc-500 uppercase tracking-wider">{section}</p>
-                      {items.map((cmd) => (
-                        <button key={cmd.id} onClick={cmd.action} className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-zinc-300 hover:bg-zinc-800 hover:text-zinc-50 transition-colors text-left">
-                          <span className="text-zinc-500">{cmd.icon}</span>
-                          {cmd.label}
-                        </button>
-                      ))}
-                    </div>
-                  );
-                })}
-              </div>
-              <div className="border-t border-zinc-800 px-4 py-2 flex items-center justify-between text-xs text-zinc-500">
-                <span>Navigate with ↑↓</span>
-                <span>ESC to close</span>
-              </div>
-            </div>
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
+    <>
+      <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[200] transition-opacity animate-in fade-in duration-200" onClick={() => setIsOpen(false)} />
+      <div className="fixed top-[20%] left-1/2 -translate-x-1/2 w-full max-w-lg z-[201] px-4 animate-in zoom-in-95 fade-in duration-200">
+        <div className="bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl shadow-black/50 overflow-hidden">
+          <div className="flex items-center gap-3 px-4 border-b border-zinc-800">
+            <Search className="w-4 h-4 text-zinc-500 shrink-0" />
+            <input type="text" placeholder="Type a command or search..." className="w-full py-3.5 bg-transparent text-zinc-50 text-sm placeholder:text-zinc-500 focus:outline-none" value={query} onChange={(e) => setQuery(e.target.value)} autoFocus />
+            <button onClick={() => setIsOpen(false)} className="text-zinc-500 hover:text-zinc-300"><X className="w-4 h-4" /></button>
+          </div>
+          <div className="max-h-72 overflow-y-auto py-2">
+            {filtered.length === 0 && <p className="px-4 py-8 text-center text-sm text-zinc-500">No results found.</p>}
+            {['Navigation', 'Actions'].map((section) => {
+              const items = filtered.filter((cmd) => cmd.section === section);
+              if (items.length === 0) return null;
+              return (
+                <div key={section}>
+                  <p className="px-4 py-1.5 text-xs font-medium text-zinc-500 uppercase tracking-wider">{section}</p>
+                  {items.map((cmd) => (
+                    <button key={cmd.id} onClick={cmd.action} className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-zinc-300 hover:bg-zinc-800 hover:text-zinc-50 transition-colors text-left">
+                      <span className="text-zinc-500">{cmd.icon}</span>
+                      {cmd.label}
+                    </button>
+                  ))}
+                </div>
+              );
+            })}
+          </div>
+          <div className="border-t border-zinc-800 px-4 py-2 flex items-center justify-between text-xs text-zinc-500">
+            <span>Navigate with ↑↓</span>
+            <span>ESC to close</span>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

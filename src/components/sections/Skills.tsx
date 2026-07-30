@@ -40,3 +40,5 @@ export function Skills() {
     </Container>
   );
 }
+
+export const SkillsSection = Skills;
