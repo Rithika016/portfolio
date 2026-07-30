@@ -27,7 +27,7 @@ export function CommandPalette() {
     { id: 'blog', label: 'Go to Blog', section: 'Navigation', icon: <FileText className="w-4 h-4" />, action: () => navigateTo('#blog') },
     { id: 'skills', label: 'Go to Skills', section: 'Navigation', icon: <Code className="w-4 h-4" />, action: () => navigateTo('#skills') },
     { id: 'contact', label: 'Go to Contact', section: 'Navigation', icon: <Mail className="w-4 h-4" />, action: () => navigateTo('#contact') },
-    { id: 'resume', label: 'Download Resume', section: 'Actions', icon: <ArrowRight className="w-4 h-4" />, action: () => window.open('/resume.pdf', '_blank') },
+    { id: 'resume', label: 'Download Resume', section: 'Actions', icon: <ArrowRight className="w-4 h-4" />, action: () => window.open('/portfolio/resume.pdf', '_blank') },
     { id: 'github', label: 'Open GitHub', section: 'Actions', icon: <ArrowRight className="w-4 h-4" />, action: () => window.open('https://github.com/Rithika016', '_blank') },
     { id: 'linkedin', label: 'Open LinkedIn', section: 'Actions', icon: <ArrowRight className="w-4 h-4" />, action: () => window.open('https://linkedin.com/in/rithika-lakshmi-padala', '_blank') },
   ];

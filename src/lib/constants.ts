@@ -7,7 +7,7 @@ export const SITE_CONFIG = {
   github: 'https://github.com/Rithika016',
   linkedin: 'https://linkedin.com/in/rithika-lakshmi-padala',
   location: 'Vijayawada, India',
-  resumeUrl: '/resume.pdf',
+  resumeUrl: '/portfolio/resume.pdf',
 };
 
 export const SKILLS = {
