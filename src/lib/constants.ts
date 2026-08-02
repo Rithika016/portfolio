@@ -1,29 +1,30 @@
 export const SITE_CONFIG = {
   name: 'Rithika Lakshmi Padala',
-  title: 'Software Engineer',
-  description: 'Building scalable distributed systems and backend infrastructure.',
-  url: 'https://rithika.dev',
+  title: 'Machine Learning & Software Engineer',
+  description: 'Building machine learning pipelines, predictive models, and scalable distributed systems.',
+  url: 'https://rithika016.github.io/portfolio/',
   email: 'padalaritikalakshmi@mictech.edu.in',
   github: 'https://github.com/Rithika016',
-  linkedin: 'https://linkedin.com/in/rithika-lakshmi-padala',
+  linkedin: 'https://linkedin.com/in/rithika-lakshmi-padala-311ab9358/',
   location: 'Vijayawada, India',
-  resumeUrl: '/portfolio/resume.pdf',
+  resumeUrl: 'https://rithika016.github.io/portfolio/resume.pdf',
 };
 
 export const SKILLS = {
-  languages: ['Java', 'JavaScript (ES6+)', 'Python', 'SQL', 'C++', 'Go'],
-  frameworks: ['React', 'Node.js', 'Next.js', 'FastAPI', 'Express'],
-  databases: ['PostgreSQL', 'MongoDB', 'MySQL', 'Redis', 'Vector Databases'],
-  tools: ['Git', 'GitHub', 'Docker', 'Google Cloud Run', 'Linux', 'WebSockets'],
+  machineLearning: ['Scikit-learn', 'Pandas', 'NumPy', 'Matplotlib', 'Supervised Learning', 'Data Preprocessing', 'Feature Engineering', 'Model Evaluation', 'EDA'],
+  languages: ['Python', 'Java', 'SQL', 'C++', 'JavaScript'],
+  frameworks: ['FastAPI', 'Flask', 'Node.js', 'Express', 'React', 'REST APIs'],
+  databases: ['PostgreSQL', 'MongoDB', 'MySQL', 'Redis'],
+  tools: ['Jupyter Notebook', 'Docker', 'Git', 'GitHub', 'Google Cloud Platform (GCP)', 'Gemini API'],
 };
 
 export const EXPERIENCE = {
   education: {
     institution: 'DVR & Dr. HS MIC College of Technology',
     degree: 'Bachelor of Technology in Information Technology',
-    cgpa: '9.5 / 10.0',
+    cgpa: '9.50 / 10.00',
     expected: 'Expected May 2028',
-    coursework: ['Data Structures & Algorithms', 'Database Management Systems', 'Operating Systems', 'Object-Oriented Programming', 'Computer Networks'],
+    coursework: ['Data Structures & Algorithms', 'Machine Learning Fundamentals', 'Database Management Systems (SQL)', 'Operating Systems', 'Object-Oriented Programming', 'Probability & Statistics'],
   },
 };
 
@@ -47,150 +48,142 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
-    slug: 'distributed-job-queue',
-    title: 'Distributed Job Queue System',
-    subtitle: 'Scalable asynchronous task processing',
-    description: 'Designed and engineered a distributed job queue system in Node.js utilizing Redis for fast message broker storage and backend task routing with robust error handling and automated retry policies.',
-    techStack: ['Node.js', 'Redis', 'Docker', 'Git'],
+    slug: 'ml-predictive-pipeline',
+    title: 'Machine Learning & Predictive Modeling Pipeline',
+    subtitle: 'End-to-end ML data processing and classification engine',
+    description: 'Engineered end-to-end Machine Learning pipelines in Python using Scikit-learn, Pandas, and NumPy, achieving 90%+ classification accuracy across tabular benchmark datasets with automated preprocessing and hyperparameter tuning.',
+    techStack: ['Python', 'Scikit-learn', 'Pandas', 'NumPy', 'Matplotlib'],
+    date: 'Feb 2026',
+    github: 'https://github.com/Rithika016',
+    featured: true,
+    problem: 'Raw data requires structured cleaning, feature scaling, and feature selection before training machine learning models to prevent overfitting and ensure robust generalization.',
+    architecture: 'A Python-based ML pipeline ingests raw tabular datasets, performs exploratory data analysis (EDA), imputes missing values, scales numerical features, encodes categorical variables, and trains supervised learning algorithms (Logistic Regression, Decision Trees, Random Forests) using k-fold cross-validation.',
+    challenges: [
+      'Handling multi-feature tabular data with missing values and skewed distributions',
+      'Preventing data leakage during feature preprocessing and scaling',
+      'Optimizing model metrics across imbalanced class distributions',
+      'Selecting optimal hyperparameters using GridSearch cross-validation',
+    ],
+    decisions: [
+      'Used Scikit-learn Pipeline and ColumnTransformer for clean leakage-free data processing',
+      'Evaluated performance using Precision, Recall, F1-Score, and ROC-AUC metrics',
+      'Implemented Matplotlib visualizations for feature importance and confusion matrices',
+      'Used k-fold cross-validation for robust out-of-sample error estimation',
+    ],
+    metrics: [
+      { label: 'Accuracy', value: '90%+' },
+      { label: 'Validation', value: 'K-Fold CV' },
+      { label: 'Preprocessing', value: 'Automated' },
+      { label: 'Libraries', value: 'Scikit-learn' },
+    ],
+    mermaidDiagram: `graph LR
+    A[Raw Tabular Data] -->|Pandas EDA| B[Data Cleaning & Scaling]
+    B -->|Feature Selection| C[Scikit-learn Pipeline]
+    C -->|K-Fold CV| D[Model Training & Tuning]
+    D -->|Evaluation| E[Precision / Recall / F1 Metrics]`,
+  },
+  {
+    slug: 'scalable-code-search',
+    title: 'Scalable Code Search & Semantic Retrieval Engine',
+    subtitle: 'High-throughput text parsing & vector indexing pipeline',
+    description: 'Architected and deployed a search engine in Python processing 10,000+ files, cutting indexing and querying latency to under 150ms for 100 concurrent users using FastAPI and Redis caching on Google Cloud Run.',
+    techStack: ['Python', 'FastAPI', 'Docker', 'Redis', 'PostgreSQL', 'GCP'],
     date: 'Mar 2026',
     github: 'https://github.com/Rithika016',
     featured: true,
-    problem: 'Modern backend systems need reliable, fault-tolerant asynchronous task processing that can scale horizontally. Traditional synchronous processing creates bottlenecks and single points of failure.',
-    architecture: 'The system uses a producer-consumer architecture with Redis as the central message broker. Producers enqueue tasks with metadata and priority levels. A pool of Docker-containerized workers consume tasks from Redis queues, process them, and report results. Failed tasks are automatically retried with exponential backoff.',
+    problem: 'Navigating large code repositories requires fast, sub-second indexing and querying over multi-threaded data ingestion pipelines.',
+    architecture: 'A Python and FastAPI backend parses code files into structured tokens, indexes data across PostgreSQL and MongoDB stores, and serves concurrent search queries with sub-150ms latency using Redis caching.',
     challenges: [
-      'Ensuring zero data loss during worker crashes or network partitions',
-      'Implementing fair task distribution across multiple worker instances',
-      'Managing Redis memory under high-throughput scenarios',
-      'Designing an effective retry strategy with exponential backoff',
+      'Ingesting and parsing 10,000+ code files concurrently without blocking workers',
+      'Maintaining sub-150ms query response times under high concurrent user load',
+      'Orchestrating multi-container deployments on Google Cloud Run',
     ],
     decisions: [
-      'Chose Redis over RabbitMQ for simplicity and performance in the pub/sub pattern',
-      'Implemented worker health monitoring via heartbeat mechanism',
-      'Used Docker Compose for consistent multi-container orchestration',
-      'Designed idempotent task handlers to safely support retries',
+      'Chose FastAPI for asynchronous request handling and high-throughput Python execution',
+      'Used Redis caching layer to avoid redundant database reads for frequent queries',
+      'Containerized backend services with Docker for scalable GCP deployment',
     ],
     metrics: [
-      { label: 'Data Loss', value: 'Zero' },
-      { label: 'Retry Policy', value: 'Exponential Backoff' },
-      { label: 'Containerized', value: 'Docker' },
-      { label: 'Scaling', value: 'Horizontal' },
-    ],
-    mermaidDiagram: `graph LR
-    A[Producer API] -->|Enqueue| B[Redis Queue]
-    B -->|Dequeue| C[Worker Pool]
-    C -->|Process| D[Task Handler]
-    D -->|Success| E[Results Store]
-    D -->|Failure| F[Retry Queue]
-    F -->|Backoff| B
-    C -->|Heartbeat| G[Health Monitor]`,
-  },
-  {
-    slug: 'realtime-collaborative-editor',
-    title: 'Real-Time Collaborative Editor',
-    subtitle: 'Multi-user document editing with conflict resolution',
-    description: 'Built a scalable real-time collaborative text editor using Node.js, Express, React, and WebSockets (Socket.io) supporting simultaneous multi-user document editing with ~50ms latency.',
-    techStack: ['Node.js', 'React', 'WebSockets', 'Express', 'Socket.io'],
-    date: 'Jan 2026',
-    github: 'https://github.com/Rithika016',
-    featured: true,
-    problem: 'Real-time collaboration requires handling concurrent edits from multiple users with minimal latency, while maintaining document consistency and resolving conflicts automatically.',
-    architecture: 'A React frontend communicates with an Express + Socket.io backend via persistent WebSocket connections. The server maintains authoritative document state and broadcasts operational transforms to all connected clients. A conflict resolution algorithm ensures eventual consistency across all clients.',
-    challenges: [
-      'Designing an efficient conflict resolution algorithm for concurrent edits',
-      'Minimizing latency for real-time state synchronization across clients',
-      'Handling client disconnections and reconnections gracefully',
-      'Optimizing React component re-renders during rapid document updates',
-    ],
-    decisions: [
-      'Used WebSockets (Socket.io) over polling for true real-time bidirectional communication',
-      'Implemented operational transform for deterministic conflict resolution',
-      'Designed optimistic UI updates with server reconciliation',
-      'Used React state management with optimized component renders',
-    ],
-    metrics: [
-      { label: 'Latency', value: '~50ms' },
-      { label: 'Protocol', value: 'WebSocket' },
-      { label: 'Conflict Resolution', value: 'OT-based' },
-      { label: 'Multi-user', value: 'Yes' },
+      { label: 'Query Latency', value: '<150ms' },
+      { label: 'Files Ingested', value: '10,000+' },
+      { label: 'Concurrency', value: '100 Users' },
+      { label: 'Cloud Deployment', value: 'GCP Run' },
     ],
     mermaidDiagram: `graph TB
-    A[Client A] -->|WebSocket| D[Express + Socket.io Server]
-    B[Client B] -->|WebSocket| D
-    C[Client C] -->|WebSocket| D
-    D -->|OT Algorithm| E[Conflict Resolution]
-    E -->|Broadcast| A
-    E -->|Broadcast| B
-    E -->|Broadcast| C
-    D -->|Persist| F[Document Store]`,
+    A[Query Input] -->|FastAPI Async| B[Parsing & Search Pipeline]
+    B -->|Cache Lookup| C[Redis Cache]
+    C -->|Cache Miss| D[PostgreSQL & MongoDB]
+    C -->|Cache Hit| E[Response <150ms]
+    D -->|Store Result| C`,
   },
   {
-    slug: 'ai-codebase-assistant',
-    title: 'AI Codebase Assistant',
-    subtitle: 'RAG-powered semantic code search',
-    description: 'Built and deployed a full-stack retrieval-augmented generation (RAG) system for querying GitHub codebases using semantic search, reducing code exploration time by 60%.',
-    techStack: ['FastAPI', 'React', 'Vector DB', 'MongoDB', 'JWT', 'Google Cloud Run'],
-    date: 'Nov 2025',
+    slug: 'distributed-key-value-store',
+    title: 'Distributed Key-Value Engine with Raft Consensus',
+    subtitle: 'Fault-tolerant distributed state replication store',
+    description: 'Engineered a 5-node distributed key-value data store in Python implementing Raft consensus for leader election, state replication, and log consistency achieving 3,000+ ops/sec throughput.',
+    techStack: ['Python', 'gRPC', 'Concurrency', 'System Design'],
+    date: 'Feb 2026',
     github: 'https://github.com/Rithika016',
-    live: '#',
     featured: true,
-    problem: 'Navigating and understanding large codebases is extremely time-consuming. Developers spend significant time searching for relevant code, understanding module relationships, and finding implementation patterns.',
-    architecture: 'A React frontend sends queries to a FastAPI backend. The backend uses a vector database for semantic code indexing and retrieval, MongoDB for metadata and user session tracking, and JWT for stateless authentication. The system is containerized and deployed on Google Cloud Run with Redis caching for low-latency responses.',
+    problem: 'Distributed storage systems require strict consensus protocols to maintain consistency across node failures and network partitions.',
+    architecture: 'Implemented Raft consensus in Python with heartbeat monitoring, leader election, and log replication across 5 distributed nodes, handling 3,000+ ops/sec throughput under concurrent client load.',
     challenges: [
-      'Building an efficient semantic indexing pipeline for large codebases',
-      'Optimizing vector search for sub-200ms query latency',
-      'Implementing secure JWT-based authentication flow',
-      'Deploying and scaling on Google Cloud Run with Redis caching',
+      'Handling split-brain scenarios during network partitions',
+      'Managing thread synchronization and state locks without deadlocks',
+      'Ensuring crash recovery via write-ahead logging',
     ],
     decisions: [
-      'Chose FastAPI for async request handling and automatic OpenAPI documentation',
-      'Used vector databases over traditional full-text search for semantic understanding',
-      'Implemented JWT tokens for stateless, scalable authentication',
-      'Deployed on Google Cloud Run for automatic scaling and cost optimization',
+      'Implemented Raft leader election and heartbeat timers using Python threading',
+      'Built custom chaos-testing framework to simulate node drops and network failure',
     ],
     metrics: [
-      { label: 'Search Reduction', value: '60%' },
-      { label: 'Query Latency', value: '~150ms' },
-      { label: 'Auth', value: 'JWT' },
-      { label: 'Deployment', value: 'Cloud Run' },
+      { label: 'Throughput', value: '3,000+ ops/sec' },
+      { label: 'Cluster Size', value: '5 Nodes' },
+      { label: 'Protocol', value: 'Raft Consensus' },
+      { label: 'Consistency', value: 'Zero Data Loss' },
     ],
     mermaidDiagram: `graph TB
-    A[React Frontend] -->|Query| B[FastAPI Backend]
-    B -->|Auth| C[JWT Middleware]
-    C -->|Validated| D[RAG Pipeline]
-    D -->|Embed| E[Vector Database]
-    D -->|Metadata| F[MongoDB]
-    E -->|Results| D
-    D -->|Response| A
-    B -->|Cache| G[Redis]`,
+    A[Client Requests] -->|gRPC| B[Raft Leader Node]
+    B -->|Log Replication| C[Follower Node 1]
+    B -->|Log Replication| D[Follower Node 2]
+    B -->|Log Replication| E[Follower Node 3]
+    B -->|Majority Ack| F[Commit State to Store]`,
   },
 ];
 
 export const ACHIEVEMENTS = [
   {
-    title: 'Hackathon Competitor',
-    description: 'Competed and delivered reliable software solutions under constraints at AI for Bharat, GenAI Exchange, and Sitestrom hackathons.',
-    icon: 'Trophy',
+    title: 'Amazon ML Summer School 2026',
+    description: 'Qualified for the national selection test from a competitive nationwide applicant pool.',
+    icon: 'Brain',
   },
   {
-    title: 'Google Skills Lab — Track 2',
-    description: 'Successfully completed Track 2, developing foundational AI and cloud engineering capabilities.',
+    title: 'Machine Learning Specialization',
+    description: 'Certified by Stanford University & DeepLearning.AI (Instructor: Andrew Ng) on Coursera.',
     icon: 'Award',
   },
   {
-    title: '50+ DSA Problems',
-    description: 'Solved 50+ Data Structures and Algorithms problems across Dynamic Programming, Recursion, and Hashing.',
-    icon: 'Code',
+    title: 'Flipkart Grid 8.0',
+    description: 'Advanced to national selection round among 100,000+ nationwide participants (2026).',
+    icon: 'Trophy',
   },
   {
-    title: 'Open Source Contributor',
-    description: 'Analyzed and contributed to JSON Schema (json-schema-org), understanding modular architectures and design patterns.',
-    icon: 'GitBranch',
+    title: '3x Hackathon Winner',
+    description: 'Won 1st place in 3 inter-college hackathons (AI for Bharat, GenAI Exchange, Sitestrom) as Team Lead.',
+    icon: 'Trophy',
+  },
+  {
+    title: 'Academic Excellence (CGPA 9.50/10)',
+    description: 'Consistently ranked in the top 5% of department (200+ students) at MIC College of Technology.',
+    icon: 'GraduationCap',
   },
 ];
 
 export const NAV_ITEMS = [
   { label: 'About', href: '#about' },
+  { label: 'System Design', href: '#system-design' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Blog', href: '#blog' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Education', href: '#education' },
   { label: 'Contact', href: '#contact' },
 ];
