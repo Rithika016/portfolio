@@ -11,9 +11,10 @@ export const SITE_CONFIG = {
 };
 
 export const SKILLS = {
-  machineLearning: ['Scikit-learn', 'Pandas', 'NumPy', 'Matplotlib', 'Supervised Learning', 'Data Preprocessing', 'Feature Engineering', 'Model Evaluation', 'EDA'],
-  languages: ['Python', 'Java', 'SQL', 'C++', 'JavaScript'],
-  frameworks: ['FastAPI', 'Flask', 'Node.js', 'Express', 'React', 'REST APIs'],
+  mlFundamentals: ['Supervised Learning', 'Unsupervised Learning', 'Data Preprocessing', 'Feature Engineering', 'Model Evaluation', 'Cross-Validation', 'EDA'],
+  mlLibraries: ['Scikit-learn', 'Pandas', 'NumPy', 'Matplotlib'],
+  languages: ['Python', 'Java', 'SQL', 'JavaScript'],
+  frameworks: ['FastAPI', 'Flutter', 'Node.js', 'Express', 'React', 'REST APIs'],
   databases: ['PostgreSQL', 'MongoDB', 'MySQL', 'Redis'],
   tools: ['Jupyter Notebook', 'Docker', 'Git', 'GitHub', 'Google Cloud Platform (GCP)', 'Gemini API'],
 };
